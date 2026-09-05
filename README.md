@@ -19,7 +19,7 @@
 # Evidencia P03 - Ramas y Calidad
 
 ## URL / Identificador
-Identificador del commit final: (Pega aquí el hash de tu último commit, ej. a1b2c3d)
+Identificador del commit final: b6dcfd52b09b2e4092824e0ccb96ddbac157310d
 
 ## Guía de reproducción
 - **Herramientas:** Java 11, Maven 3, Git, SonarQube (Docker)[cite: 4, 5].
@@ -32,3 +32,10 @@ Para resolverlo:
 1. Se refactorizó `Precio` usando `BigDecimal` inmutable y se validaron entradas nulas o negativas.
 2. `DetalleVenta` ahora captura el estado del `Precio` en el momento de creación, protegiendo el historial ante cambios futuros del catálogo.
 3. Se provocó un conflicto en Git al modificar concurrentemente validaciones en `Venta.java`, el cual se resolvió manualmente preservando ambas invariantes (rechazo de nulos y cantidades negativas) sin pérdida funcional.
+
+## Índice de Evidencias (Criterios R01)
+* **Funcionamiento:** `evidencia_pruebas.png` (Script de verificación exitoso).
+* **Solución técnica:** Código fuente en el `.zip` demostrando el uso de `BigDecimal` inmutable.
+* **Pruebas:** `evidencia_pruebas.png` (Salida de JUnit y JaCoCo).
+* **Calidad y Sonar:** `evidencia_sonar.png` (Reporte limpio en servidor local).
+* **Git y evidencia:** `evidencia_git.png` (Grafo y commit de resolución) y carpeta `.git` dentro del proyecto.
