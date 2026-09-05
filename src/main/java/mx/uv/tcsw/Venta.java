@@ -16,4 +16,5 @@ public class Venta {
         }
         return total;
     }
-}
+}// TODO: Validar cantidad antes de descontar
+// TODO: Calcular impuestos sobre el total

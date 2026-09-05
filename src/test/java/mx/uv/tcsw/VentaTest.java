@@ -1,25 +1,32 @@
 package mx.uv.tcsw;
 
 import org.junit.Test;
+import java.math.BigDecimal;
 import static org.junit.Assert.*;
 
 public class VentaTest {
 
     @Test
-    public void pruebaEstadoValido_CalculaTotalCorrectamente() {
-        Producto p1 = new Producto("001", "Libro", new Precio(200.0), 10);
-        Venta venta = new Venta();
+    public void pruebaPrecioHistoricoSeConserva() {
+        Precio precioOriginal = new Precio(new BigDecimal("100.50"));
+        Producto prod = new Producto("Monitor", precioOriginal);
+        DetalleVenta detalle = new DetalleVenta(prod, 2);
         
-        venta.agregarPartida(p1, 2);
+        // Simulamos que el precio del producto sube después de venderlo
+        prod.setPrecio(new Precio(new BigDecimal("150.00")));
         
-        assertEquals(400.0, venta.calcularTotal(), 0.01);
+        // El detalle debe mantener el histórico intacto
+        assertEquals(new BigDecimal("100.50"), detalle.getPrecioHistorico().getValor());
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void pruebaEstadoInvalido_RechazaCantidadCero() {
-        Producto p2 = new Producto("002", "Goma", new Precio(10.0), 5);
-        Venta venta = new Venta();
-        
-        venta.agregarPartida(p2, 0); // Lanza la excepción y la prueba pasa
+    public void pruebaPrecioRechazaNegativos() {
+        new Precio(new BigDecimal("-10.00")); // Debe lanzar excepción
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void pruebaDetalleRechazaCantidadInvalida() {
+        Producto prod = new Producto("Mouse", new Precio(new BigDecimal("50.00")));
+        new DetalleVenta(prod, 0); // Debe lanzar excepción
     }
 }

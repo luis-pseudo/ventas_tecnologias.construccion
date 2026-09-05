@@ -1,14 +1,18 @@
 package mx.uv.tcsw;
 
-public class Precio {
-    private final double valor;
+import java.math.BigDecimal;
 
-    public Precio(double valor) {
-        if (valor < 0) {
-            throw new IllegalArgumentException("El precio no puede ser negativo");
+public final class Precio {
+    private final BigDecimal valor;
+
+    public Precio(BigDecimal valor) {
+        if (valor == null || valor.compareTo(BigDecimal.ZERO) < 0) {
+            throw new IllegalArgumentException("El precio no puede ser nulo o negativo");
         }
         this.valor = valor;
     }
 
-    public double getValor() { return valor; }
+    public BigDecimal getValor() {
+        return valor;
+    }
 }
