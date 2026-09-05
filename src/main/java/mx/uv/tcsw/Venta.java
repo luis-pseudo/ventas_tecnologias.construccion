@@ -16,4 +16,4 @@ public class Venta {
         }
         return total;
     }
-}
+}// TODO: Validar cantidad antes de descontar
