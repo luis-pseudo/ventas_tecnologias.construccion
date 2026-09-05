@@ -16,4 +16,4 @@ public class Venta {
         }
         return total;
     }
-}
+}// TODO: Calcular impuestos sobre el total
