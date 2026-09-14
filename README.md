@@ -45,7 +45,7 @@ Para resolverlo:
 ## Identificadores de Entrega
 * **URL del repositorio:** [https://github.com/luis-pseudo/ventas_tecnologias.construccion.git]
 * **Etiqueta (Tag) final:** `v1.0.M04`
-* **Commit final:** [Hash del último commit en main]
+* **Commit final:** [https://github.com/luis-pseudo/ventas_tecnologias.construccion.git]
 
 ## Guía de Reproducción
 - **Herramientas:** Java 11, Maven 3, Git, SonarQube.
