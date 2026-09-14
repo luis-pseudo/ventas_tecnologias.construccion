@@ -1,5 +1,13 @@
 package mx.uv.tcsw.application;
 
-public class ProductoRepository {
+import mx.uv.tcsw.Producto;
+import java.util.List;
+import java.util.Optional;
 
+public interface ProductoRepository {
+	void guardar(String id, Producto producto);
+
+	Optional<Producto> buscarPorId(String id);
+
+	List<Producto> obtenerTodos();
 }
