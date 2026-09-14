@@ -39,3 +39,22 @@ Para resolverlo:
 * **Pruebas:** `evidencia_pruebas.png` (Salida de JUnit y JaCoCo).
 * **Calidad y Sonar:** `evidencia_sonar.png` (Reporte limpio en servidor local).
 * **Git y evidencia:** `evidencia_git.png` (Grafo y commit de resolución) y carpeta `.git` dentro del proyecto.
+
+# Evidencia Grupal P04 - Flujo Colaborativo GitHub
+
+## Identificadores de Entrega
+* **URL del repositorio:** [https://github.com/luis-pseudo/ventas_tecnologias.construccion.git]
+* **Etiqueta (Tag) final:** `v1.0.M04`
+* **Commit final:** [Hash del último commit en main]
+
+## Guía de Reproducción
+- **Herramientas:** Java 11, Maven 3, Git, SonarQube.
+- **Ejecución de Pruebas:** Desde la raíz del proyecto, ejecutar el comando `./scripts/verify-module.sh M04`.
+- **Análisis de Calidad:** `mvn clean verify sonar:sonar -Dsonar.projectKey=tcsw-ventas -Dsonar.host.url=http://localhost:9000 -Dsonar.login=[TOKEN]`
+
+## Índice de Evidencia (Criterios R01)
+1. **Funcionamiento:** Se implementó `InMemoryProductoRepository` que satisface el contrato compartido. El script arroja `MODULO_M04_VERIFICADO`. *(Ver enlaces o carpeta de capturas adjuntas)*.
+2. **Solución Técnica:** Se usó un adaptador en memoria con protección de mutabilidad mediante `Optional` y colecciones inmodificables. Las decisiones de diseño están fundamentadas en las revisiones en GitHub.
+3. **Pruebas:** Se ejecutaron localmente y con el script automatizado. La ejecución resultó aprobada sin errores tras las correcciones de revisión.
+4. **Calidad y Sonar:** El análisis estático en SonarQube presenta un resultado concluyente, atendiendo los hallazgos en el tablero del proyecto local.
+5. **Git y Evidencia:** El flujo colaborativo se encuentra documentado en los Pull Requests de GitHub. Cada integrante detalla su contribución, rol y trazabilidad técnica en la carpeta `docs/contribuciones/`.
