@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="mx.uv.tcsw.VentaTest" time="0.035" tests="3" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="mx.uv.tcsw.VentaTest" time="0.042" tests="3" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
+    <property name="sonar.login" value="0144fd70121bf62dcf8d2d00a60d02d35e473c15"/>
+    <property name="sonar.host.url" value="http://localhost:9000"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
     <property name="java.class.path" value="/home/lpseudo/Documents/tecnologias/tcsw-ventas/target/test-classes:/home/lpseudo/Documents/tecnologias/tcsw-ventas/target/classes:/home/lpseudo/.m2/repository/junit/junit/4.13.2/junit-4.13.2.jar:/home/lpseudo/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:"/>
     <property name="java.vm.vendor" value="Eclipse Adoptium"/>
@@ -12,7 +14,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="/home/lpseudo/.sdkman/candidates/java/21.0.11-tem/lib"/>
-    <property name="sun.java.command" value="/home/lpseudo/Documents/tecnologias/tcsw-ventas/target/surefire/surefirebooter-20260905143319533_3.jar /home/lpseudo/Documents/tecnologias/tcsw-ventas/target/surefire 2026-09-05T14-33-19_477-jvmRun1 surefire-20260905143319533_1tmp surefire_0-20260905143319533_2tmp"/>
+    <property name="sun.java.command" value="/home/lpseudo/Documents/tecnologias/tcsw-ventas/target/surefire/surefirebooter-20260913233902730_3.jar /home/lpseudo/Documents/tecnologias/tcsw-ventas/target/surefire 2026-09-13T23-39-02_687-jvmRun1 surefire-20260913233902730_1tmp surefire_0-20260913233902730_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/home/lpseudo/Documents/tecnologias/tcsw-ventas/target/test-classes:/home/lpseudo/Documents/tecnologias/tcsw-ventas/target/classes:/home/lpseudo/.m2/repository/junit/junit/4.13.2/junit-4.13.2.jar:/home/lpseudo/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -25,15 +27,15 @@
     <property name="basedir" value="/home/lpseudo/Documents/tecnologias/tcsw-ventas"/>
     <property name="java.vm.compressedOopsMode" value="Zero based"/>
     <property name="line.separator" value="&#10;"/>
-    <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
-    <property name="surefire.real.class.path" value="/home/lpseudo/Documents/tecnologias/tcsw-ventas/target/surefire/surefirebooter-20260905143319533_3.jar"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="/home/lpseudo/Documents/tecnologias/tcsw-ventas/target/surefire/surefirebooter-20260913233902730_3.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21.0.11+10-LTS"/>
     <property name="user.name" value="lpseudo"/>
     <property name="stdout.encoding" value="UTF-8"/>
     <property name="path.separator" value=":"/>
-    <property name="os.version" value="7.2.3-arch1-2"/>
+    <property name="os.version" value="7.2.4-arch1-2"/>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="file.encoding" value="UTF-8"/>
     <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
@@ -46,6 +48,7 @@
     <property name="os.arch" value="amd64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="native.encoding" value="UTF-8"/>
+    <property name="sonar.projectKey" value="tcsw-ventas"/>
     <property name="java.library.path" value="/opt/cuda/lib64::/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib"/>
     <property name="java.vm.info" value="mixed mode, sharing"/>
     <property name="stderr.encoding" value="UTF-8"/>
@@ -54,7 +57,7 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="pruebaDetalleRechazaCantidadInvalida" classname="mx.uv.tcsw.VentaTest" time="0.005"/>
+  <testcase name="pruebaDetalleRechazaCantidadInvalida" classname="mx.uv.tcsw.VentaTest" time="0.006"/>
   <testcase name="pruebaPrecioHistoricoSeConserva" classname="mx.uv.tcsw.VentaTest" time="0.0"/>
   <testcase name="pruebaPrecioRechazaNegativos" classname="mx.uv.tcsw.VentaTest" time="0.0"/>
 </testsuite>

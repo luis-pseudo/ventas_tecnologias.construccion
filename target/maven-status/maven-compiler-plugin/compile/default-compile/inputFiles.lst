@@ -2,3 +2,5 @@
 /home/lpseudo/Documents/tecnologias/tcsw-ventas/src/main/java/mx/uv/tcsw/Precio.java
 /home/lpseudo/Documents/tecnologias/tcsw-ventas/src/main/java/mx/uv/tcsw/Producto.java
 /home/lpseudo/Documents/tecnologias/tcsw-ventas/src/main/java/mx/uv/tcsw/Venta.java
+/home/lpseudo/Documents/tecnologias/tcsw-ventas/src/main/java/mx/uv/tcsw/adapter/memory/InMemoryProductoRepository.java
+/home/lpseudo/Documents/tecnologias/tcsw-ventas/src/main/java/mx/uv/tcsw/application/ProductoRepository.java

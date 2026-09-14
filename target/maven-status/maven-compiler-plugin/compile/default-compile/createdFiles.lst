@@ -2,3 +2,5 @@ mx/uv/tcsw/DetalleVenta.class
 mx/uv/tcsw/Producto.class
 mx/uv/tcsw/Precio.class
 mx/uv/tcsw/Venta.class
+mx/uv/tcsw/adapter/memory/InMemoryProductoRepository.class
+mx/uv/tcsw/application/ProductoRepository.class
