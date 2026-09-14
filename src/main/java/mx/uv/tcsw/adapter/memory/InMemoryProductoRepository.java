@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Collections;
 import java.util.ArrayList;
 
 public class InMemoryProductoRepository implements ProductoRepository {
@@ -24,6 +25,7 @@ public class InMemoryProductoRepository implements ProductoRepository {
 
 	@Override
 	public List<Producto> obtenerTodos() {
-		return new ArrayList<>(almacen.values());
+		// Corrección aplicada: Se protege la lista devuelta
+		return Collections.unmodifiableList(new ArrayList<>(almacen.values()));
 	}
 }
