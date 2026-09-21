@@ -1,7 +1,7 @@
 package mx.uv.tcsw.adapter.memory;
 
 import mx.uv.tcsw.application.ProductoRepository;
-import mx.uv.tcsw.Producto;
+import mx.uv.tcsw.domain.Producto;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

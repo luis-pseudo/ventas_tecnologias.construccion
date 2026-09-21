@@ -3,6 +3,7 @@ package mx.uv.tcsw;
 import org.junit.Test;
 import java.math.BigDecimal;
 import static org.junit.Assert.*;
+import mx.uv.tcsw.domain.*;
 
 public class VentaTest {
 

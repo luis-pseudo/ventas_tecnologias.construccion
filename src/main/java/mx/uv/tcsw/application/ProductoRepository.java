@@ -1,6 +1,6 @@
 package mx.uv.tcsw.application;
 
-import mx.uv.tcsw.Producto;
+import mx.uv.tcsw.domain.Producto;
 import java.util.List;
 import java.util.Optional;
 
