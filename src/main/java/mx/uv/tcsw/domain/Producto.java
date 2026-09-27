@@ -1,4 +1,4 @@
-package mx.uv.tcsw;
+package mx.uv.tcsw.domain;
 
 public class Producto {
     private String nombre;

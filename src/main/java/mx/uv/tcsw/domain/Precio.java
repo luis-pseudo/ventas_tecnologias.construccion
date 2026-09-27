@@ -1,4 +1,4 @@
-package mx.uv.tcsw;
+package mx.uv.tcsw.domain;
 
 import java.math.BigDecimal;
 

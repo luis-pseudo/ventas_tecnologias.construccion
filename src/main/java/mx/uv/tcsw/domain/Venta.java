@@ -6,8 +6,19 @@ import java.util.UUID;
 
 public class Venta {
     // ID necesario para que el Puerto de Salida y el Adaptador puedan buscar/guardar
-    private final String id = UUID.randomUUID().toString();
+    private String id = UUID.randomUUID().toString();
     private List<DetalleVenta> detalles = new ArrayList<>();
+
+    public Venta(String id) {
+        if (id == null || id.isEmpty()) {
+            throw new IllegalArgumentException("El ID de la venta no puede ser nulo o vacío");
+        }
+        this.id = id;
+    }
+
+    public Venta() {
+        // Constructor por defecto para crear una venta con un ID generado automáticamente
+    }
 
     public String getId() {
         return id;
