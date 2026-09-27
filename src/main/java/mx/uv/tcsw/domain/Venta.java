@@ -2,26 +2,23 @@ package mx.uv.tcsw.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class Venta {
-    // ID necesario para que el Puerto de Salida y el Adaptador puedan buscar/guardar
-    private String id = UUID.randomUUID().toString();
+    private final String id;
     private List<DetalleVenta> detalles = new ArrayList<>();
+    private PoliticaDescuento politicaDescuento = new SinDescuento();
+    private List<VentaObserver> observadores = new ArrayList<>();
 
     public Venta(String id) {
-        if (id == null || id.isEmpty()) {
-            throw new IllegalArgumentException("El ID de la venta no puede ser nulo o vacío");
-        }
         this.id = id;
     }
 
-    public Venta() {
-        // Constructor por defecto para crear una venta con un ID generado automáticamente
+    public void setPoliticaDescuento(PoliticaDescuento politica) {
+        this.politicaDescuento = politica;
     }
 
-    public String getId() {
-        return id;
+    public void agregarObservador(VentaObserver observador) {
+        this.observadores.add(observador);
     }
 
     public void agregarPartida(Producto producto, int cantidad) {
@@ -29,10 +26,16 @@ public class Venta {
     }
 
     public double calcularTotal() {
-        double total = 0;
+        double subtotal = 0;
         for (DetalleVenta detalle : detalles) {
-            total += detalle.getSubtotal();
+            subtotal += detalle.getSubtotal();
         }
-        return total;
+        return subtotal - politicaDescuento.calcular(this);
+    }
+
+    public void confirmarVenta() {
+        for (VentaObserver obs : observadores) {
+            obs.enVentaRegistrada(this);
+        }
     }
 }
