@@ -58,3 +58,31 @@ Para resolverlo:
 3. **Pruebas:** Se ejecutaron localmente y con el script automatizado. La ejecución resultó aprobada sin errores tras las correcciones de revisión.
 4. **Calidad y Sonar:** El análisis estático en SonarQube presenta un resultado concluyente, atendiendo los hallazgos en el tablero del proyecto local.
 5. **Git y Evidencia:** El flujo colaborativo se encuentra documentado en los Pull Requests de GitHub. Cada integrante detalla su contribución, rol y trazabilidad técnica en la carpeta `docs/contribuciones/`.
+
+# Evidencia P06 - Patrones para el dominio
+
+## Guía de Reproducción
+- **URL del Repositorio:** https://github.com/luis-pseudo/ventas_tecnologias.construccion
+- **Commit/Tag Final:** `v1.0.M06`
+- **Comprobación:** Ejecutar `./scripts/verify-module.sh M06`
+- **Análisis SonarQube:** Ejecutar `mvn clean verify sonar:sonar ...`
+
+## Índice de Evidencia (R01)
+* **Funcionamiento:** Ejecución y salida del script de validación.
+* **Solución técnica:** Aplicación documentada de patrones en el dominio.
+* **Pruebas:** Casos de prueba automatizados en `VentaPatronesTest.java`.
+* **Calidad y Sonar:** Captura del análisis limpio.
+* **Git y evidencia:** Historial de commits y archivo de contribuciones individuales.
+
+## Análisis de Decisiones y Alternativas (ADR)
+1. **Strategy vs Condicionales Directos:**
+   - *Problema:* El cálculo de descuentos anidaba múltiples `if/else`, dificultando la prueba aislada.
+   - *Alternativa descartada:* Mantener condicionales directos en `Venta`.
+   - *Decisión:* Strategy. Permite intercambiar políticas de descuento sin modificar la entidad principal, mejorando la extensibilidad. Costo: Introduce más clases e indirección.
+2. **Factory Method:**
+   - *Decisión:* Concentra la validación de creación de la entidad `Venta`.
+3. **Observer:**
+   - *Decisión:* Desacopla la lógica de notificación (ej. envío de correos o auditoría) del flujo de caja, evitando que el dominio conozca infraestructura externa.
+4. **Análisis crítico de Singleton y Facade:**
+   - *Singleton:* Se rechaza su uso en este núcleo de dominio debido a que introduce estado global mutable, lo cual dificulta las pruebas unitarias concurrentes y oculta las dependencias reales de las clases.
+   - *Facade:* Se considera innecesario en esta etapa, ya que la complejidad actual del subsistema de ventas no requiere una interfaz simplificada adicional que oculte interacciones complejas.
