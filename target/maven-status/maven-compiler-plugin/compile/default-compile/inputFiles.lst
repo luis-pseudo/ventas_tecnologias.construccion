@@ -1,7 +1,9 @@
 /home/lpseudo/Documents/tecnologias/tcsw-ventas/src/main/java/mx/uv/tcsw/adapter/memory/InMemoryProductoRepository.java
+/home/lpseudo/Documents/tecnologias/tcsw-ventas/src/main/java/mx/uv/tcsw/adapter/memory/InMemoryVentaRepository.java
 /home/lpseudo/Documents/tecnologias/tcsw-ventas/src/main/java/mx/uv/tcsw/application/ProductoRepository.java
 /home/lpseudo/Documents/tecnologias/tcsw-ventas/src/main/java/mx/uv/tcsw/application/port/in/RegistrarVentaUseCase.java
 /home/lpseudo/Documents/tecnologias/tcsw-ventas/src/main/java/mx/uv/tcsw/application/port/out/VentaRepository.java
+/home/lpseudo/Documents/tecnologias/tcsw-ventas/src/main/java/mx/uv/tcsw/application/service/RegistrarVentaService.java
 /home/lpseudo/Documents/tecnologias/tcsw-ventas/src/main/java/mx/uv/tcsw/domain/DetalleVenta.java
 /home/lpseudo/Documents/tecnologias/tcsw-ventas/src/main/java/mx/uv/tcsw/domain/Precio.java
 /home/lpseudo/Documents/tecnologias/tcsw-ventas/src/main/java/mx/uv/tcsw/domain/Producto.java
