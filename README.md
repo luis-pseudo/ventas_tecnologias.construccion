@@ -1,4 +1,4 @@
-# Gu√≠a de Reproducci√≥n - P02 Venta en Memoria
+# GuÌa de ReproducciÛn - P02 Venta en Memoria
 
 ## Herramientas y versiones
 * Java 11 (SDKMAN)
@@ -7,13 +7,13 @@
 
 ## Comandos para reproducir
 1. Ejecutar pruebas automatizadas: `mvn clean test`
-2. Verificaci√≥n de m√≥dulo: `./scripts/verify-module.sh M02`
+2. VerificaciÛn de mÛdulo: `./scripts/verify-module.sh M02`
 
 ## Calidad y Sonar
 * **Estado:** PENDIENTE. 
-* **Justificaci√≥n:** Fallo cr√≠tico en la red de Docker (m√≥dulo veth) en Arch Linux minutos antes del cierre impidi√≥ levantar el contenedor de SonarQube.
+* **JustificaciÛn:** Fallo crÌtico en la red de Docker (mÛdulo veth) en Arch Linux minutos antes del cierre impidiÛ levantar el contenedor de SonarQube.
 
-## Decisiones T√©cnicas
+## Decisiones TÈcnicas
 * Se implementaron Objetos de Valor (Precio) e Invariantes para proteger el estado de Producto y DetalleVenta.
 
 # Evidencia P03 - Ramas y Calidad
@@ -21,24 +21,24 @@
 ## URL / Identificador
 Identificador del commit final: b6dcfd52b09b2e4092824e0ccb96ddbac157310d
 
-## Gu√≠a de reproducci√≥n
+## GuÌa de reproducciÛn
 - **Herramientas:** Java 11, Maven 3, Git, SonarQube (Docker)[cite: 4, 5].
 - **Comandos de pruebas:** `mvn clean test` y `./scripts/verify-module.sh M03`[cite: 1].
 - **Comando de calidad:** `mvn clean verify sonar:sonar -Dsonar.projectKey=tcsw-ventas -Dsonar.host.url=http://localhost:9000 -Dsonar.login=<TOKEN>`
 
-## Justificaci√≥n t√©cnica (Saber te√≥rico y anal√≠tico)
-Se identific√≥ que el modelo depend√≠a de valores mutables de precisi√≥n limitada y no conservaba el precio hist√≥rico. 
+## JustificaciÛn tÈcnica (Saber teÛrico y analÌtico)
+Se identificÛ que el modelo dependÌa de valores mutables de precisiÛn limitada y no conservaba el precio histÛrico. 
 Para resolverlo:
-1. Se refactoriz√≥ `Precio` usando `BigDecimal` inmutable y se validaron entradas nulas o negativas.
-2. `DetalleVenta` ahora captura el estado del `Precio` en el momento de creaci√≥n, protegiendo el historial ante cambios futuros del cat√°logo.
-3. Se provoc√≥ un conflicto en Git al modificar concurrentemente validaciones en `Venta.java`, el cual se resolvi√≥ manualmente preservando ambas invariantes (rechazo de nulos y cantidades negativas) sin p√©rdida funcional.
+1. Se refactorizÛ `Precio` usando `BigDecimal` inmutable y se validaron entradas nulas o negativas.
+2. `DetalleVenta` ahora captura el estado del `Precio` en el momento de creaciÛn, protegiendo el historial ante cambios futuros del cat·logo.
+3. Se provocÛ un conflicto en Git al modificar concurrentemente validaciones en `Venta.java`, el cual se resolviÛ manualmente preservando ambas invariantes (rechazo de nulos y cantidades negativas) sin pÈrdida funcional.
 
-## √çndice de Evidencias (Criterios R01)
-* **Funcionamiento:** `evidencia_pruebas.png` (Script de verificaci√≥n exitoso).
-* **Soluci√≥n t√©cnica:** C√≥digo fuente en el `.zip` demostrando el uso de `BigDecimal` inmutable.
+## Õndice de Evidencias (Criterios R01)
+* **Funcionamiento:** `evidencia_pruebas.png` (Script de verificaciÛn exitoso).
+* **SoluciÛn tÈcnica:** CÛdigo fuente en el `.zip` demostrando el uso de `BigDecimal` inmutable.
 * **Pruebas:** `evidencia_pruebas.png` (Salida de JUnit y JaCoCo).
 * **Calidad y Sonar:** `evidencia_sonar.png` (Reporte limpio en servidor local).
-* **Git y evidencia:** `evidencia_git.png` (Grafo y commit de resoluci√≥n) y carpeta `.git` dentro del proyecto.
+* **Git y evidencia:** `evidencia_git.png` (Grafo y commit de resoluciÛn) y carpeta `.git` dentro del proyecto.
 
 # Evidencia Grupal P04 - Flujo Colaborativo GitHub
 
@@ -47,42 +47,42 @@ Para resolverlo:
 * **Etiqueta (Tag) final:** `v1.0.M04`
 * **Commit final:** [https://github.com/luis-pseudo/ventas_tecnologias.construccion.git]
 
-## Gu√≠a de Reproducci√≥n
+## GuÌa de ReproducciÛn
 - **Herramientas:** Java 11, Maven 3, Git, SonarQube.
-- **Ejecuci√≥n de Pruebas:** Desde la ra√≠z del proyecto, ejecutar el comando `./scripts/verify-module.sh M04`.
-- **An√°lisis de Calidad:** `mvn clean verify sonar:sonar -Dsonar.projectKey=tcsw-ventas -Dsonar.host.url=http://localhost:9000 -Dsonar.login=[TOKEN]`
+- **EjecuciÛn de Pruebas:** Desde la raÌz del proyecto, ejecutar el comando `./scripts/verify-module.sh M04`.
+- **An·lisis de Calidad:** `mvn clean verify sonar:sonar -Dsonar.projectKey=tcsw-ventas -Dsonar.host.url=http://localhost:9000 -Dsonar.login=[TOKEN]`
 
-## √çndice de Evidencia (Criterios R01)
-1. **Funcionamiento:** Se implement√≥ `InMemoryProductoRepository` que satisface el contrato compartido. El script arroja `MODULO_M04_VERIFICADO`. *(Ver enlaces o carpeta de capturas adjuntas)*.
-2. **Soluci√≥n T√©cnica:** Se us√≥ un adaptador en memoria con protecci√≥n de mutabilidad mediante `Optional` y colecciones inmodificables. Las decisiones de dise√±o est√°n fundamentadas en las revisiones en GitHub.
-3. **Pruebas:** Se ejecutaron localmente y con el script automatizado. La ejecuci√≥n result√≥ aprobada sin errores tras las correcciones de revisi√≥n.
-4. **Calidad y Sonar:** El an√°lisis est√°tico en SonarQube presenta un resultado concluyente, atendiendo los hallazgos en el tablero del proyecto local.
-5. **Git y Evidencia:** El flujo colaborativo se encuentra documentado en los Pull Requests de GitHub. Cada integrante detalla su contribuci√≥n, rol y trazabilidad t√©cnica en la carpeta `docs/contribuciones/`.
+## Õndice de Evidencia (Criterios R01)
+1. **Funcionamiento:** Se implementÛ `InMemoryProductoRepository` que satisface el contrato compartido. El script arroja `MODULO_M04_VERIFICADO`. *(Ver enlaces o carpeta de capturas adjuntas)*.
+2. **SoluciÛn TÈcnica:** Se usÛ un adaptador en memoria con protecciÛn de mutabilidad mediante `Optional` y colecciones inmodificables. Las decisiones de diseÒo est·n fundamentadas en las revisiones en GitHub.
+3. **Pruebas:** Se ejecutaron localmente y con el script automatizado. La ejecuciÛn resultÛ aprobada sin errores tras las correcciones de revisiÛn.
+4. **Calidad y Sonar:** El an·lisis est·tico en SonarQube presenta un resultado concluyente, atendiendo los hallazgos en el tablero del proyecto local.
+5. **Git y Evidencia:** El flujo colaborativo se encuentra documentado en los Pull Requests de GitHub. Cada integrante detalla su contribuciÛn, rol y trazabilidad tÈcnica en la carpeta `docs/contribuciones/`.
 
 # Evidencia P06 - Patrones para el dominio
 
-## Gu√≠a de Reproducci√≥n
+## GuÌa de ReproducciÛn
 - **URL del Repositorio:** https://github.com/luis-pseudo/ventas_tecnologias.construccion
 - **Commit/Tag Final:** `v1.0.M06`
-- **Comprobaci√≥n:** Ejecutar `./scripts/verify-module.sh M06`
-- **An√°lisis SonarQube:** Ejecutar `mvn clean verify sonar:sonar ...`
+- **ComprobaciÛn:** Ejecutar `./scripts/verify-module.sh M06`
+- **An·lisis SonarQube:** Ejecutar `mvn clean verify sonar:sonar ...`
 
-## √çndice de Evidencia (R01)
-* **Funcionamiento:** Ejecuci√≥n y salida del script de validaci√≥n.
-* **Soluci√≥n t√©cnica:** Aplicaci√≥n documentada de patrones en el dominio.
+## Õndice de Evidencia (R01)
+* **Funcionamiento:** EjecuciÛn y salida del script de validaciÛn.
+* **SoluciÛn tÈcnica:** AplicaciÛn documentada de patrones en el dominio.
 * **Pruebas:** Casos de prueba automatizados en `VentaPatronesTest.java`.
-* **Calidad y Sonar:** Captura del an√°lisis limpio.
+* **Calidad y Sonar:** Captura del an·lisis limpio.
 * **Git y evidencia:** Historial de commits y archivo de contribuciones individuales.
 
-## An√°lisis de Decisiones y Alternativas (ADR)
+## An·lisis de Decisiones y Alternativas (ADR)
 1. **Strategy vs Condicionales Directos:**
-   - *Problema:* El c√°lculo de descuentos anidaba m√∫ltiples `if/else`, dificultando la prueba aislada.
+   - *Problema:* El c·lculo de descuentos anidaba m˙ltiples `if/else`, dificultando la prueba aislada.
    - *Alternativa descartada:* Mantener condicionales directos en `Venta`.
-   - *Decisi√≥n:* Strategy. Permite intercambiar pol√≠ticas de descuento sin modificar la entidad principal, mejorando la extensibilidad. Costo: Introduce m√°s clases e indirecci√≥n.
+   - *DecisiÛn:* Strategy. Permite intercambiar polÌticas de descuento sin modificar la entidad principal, mejorando la extensibilidad. Costo: Introduce m·s clases e indirecciÛn.
 2. **Factory Method:**
-   - *Decisi√≥n:* Concentra la validaci√≥n de creaci√≥n de la entidad `Venta`.
+   - *DecisiÛn:* Concentra la validaciÛn de creaciÛn de la entidad `Venta`.
 3. **Observer:**
-   - *Decisi√≥n:* Desacopla la l√≥gica de notificaci√≥n (ej. env√≠o de correos o auditor√≠a) del flujo de caja, evitando que el dominio conozca infraestructura externa.
-4. **An√°lisis cr√≠tico de Singleton y Facade:**
-   - *Singleton:* Se rechaza su uso en este n√∫cleo de dominio debido a que introduce estado global mutable, lo cual dificulta las pruebas unitarias concurrentes y oculta las dependencias reales de las clases.
+   - *DecisiÛn:* Desacopla la lÛgica de notificaciÛn (ej. envÌo de correos o auditorÌa) del flujo de caja, evitando que el dominio conozca infraestructura externa.
+4. **An·lisis crÌtico de Singleton y Facade:**
+   - *Singleton:* Se rechaza su uso en este n˙cleo de dominio debido a que introduce estado global mutable, lo cual dificulta las pruebas unitarias concurrentes y oculta las dependencias reales de las clases.
    - *Facade:* Se considera innecesario en esta etapa, ya que la complejidad actual del subsistema de ventas no requiere una interfaz simplificada adicional que oculte interacciones complejas.
