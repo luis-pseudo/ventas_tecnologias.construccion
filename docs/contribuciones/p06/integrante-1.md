@@ -1,7 +1,7 @@
 # Bitácora de Contribución - Integrante 1
 
-**Rol:** Autor de Strategy / Revisor
-**Issue atendido:** #1 (Implementar patrón Strategy para variación de descuentos)
+**Rol:** Autor de Strategy y Documentación (ADR) / Revisor
+**Issue atendido:** #1 (Implementar patrón Strategy y documentar decisiones)
 **Pull Request:** PR #1
 
-Para esta práctica me enfoqué en resolver el problema de cómo íbamos a manejar los diferentes tipos de descuento. Si dejábamos todo dentro de la clase `Venta` con puros `if/else`, el código se iba a volver muy difícil de mantener y probar. Por eso decidí aplicar el patrón Strategy. Creé la interfaz `PoliticaDescuento` y dos clases concretas (`SinDescuento` y `DescuentoPorVolumen`). Con esto, ahora podemos cambiar la regla de los descuentos en tiempo de ejecución sin tener que modificar la entidad principal, evitando la sobreingeniería. Además, revisé el PR de la fábrica de mi compañero para comprobar que no se nos estuviera pasando ninguna validación al momento de crear los objetos.
+Para esta práctica me encargué de dos partes clave. En el código, implementé el patrón Strategy (`PoliticaDescuento`, `SinDescuento` y `DescuentoPorVolumen`) para resolver la variación de descuentos sin llenar de condicionales la entidad principal. Por otro lado, asumí la responsabilidad de documentar la entrega en el `README.md`. Ahí redacté el archivo ADR detallando las alternativas descartadas y el análisis crítico, explicando por qué decidimos no usar Singleton (ya que el estado global rompe las pruebas unitarias) ni Facade (porque aún no hay subsistemas complejos).
