@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="mx.uv.tcsw.VentaTest" time="0.0" tests="3" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="mx.uv.tcsw.domain.DominioYPatronesTest" time="0.007" tests="18" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -54,7 +54,22 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="pruebaDetalleRechazaCantidadInvalida" classname="mx.uv.tcsw.VentaTest" time="0.0"/>
-  <testcase name="pruebaPrecioHistoricoSeConserva" classname="mx.uv.tcsw.VentaTest" time="0.0"/>
-  <testcase name="pruebaPrecioRechazaNegativos" classname="mx.uv.tcsw.VentaTest" time="0.0"/>
+  <testcase name="testVentaFactoryCreacionValida" classname="mx.uv.tcsw.domain.DominioYPatronesTest" time="0.0"/>
+  <testcase name="testVentaGettersYCalculoSinDescuentoExplicito" classname="mx.uv.tcsw.domain.DominioYPatronesTest" time="0.0"/>
+  <testcase name="testProductoNombreVacioLanzaExcepcion" classname="mx.uv.tcsw.domain.DominioYPatronesTest" time="0.0"/>
+  <testcase name="testVentaFactoryConstructorPrivado" classname="mx.uv.tcsw.domain.DominioYPatronesTest" time="0.0"/>
+  <testcase name="testVentaFactoryListaVaciaLanzaExcepcion" classname="mx.uv.tcsw.domain.DominioYPatronesTest" time="0.0"/>
+  <testcase name="testStrategyDescuentoPorVolumenNoAplicaMenorOIgualA1000" classname="mx.uv.tcsw.domain.DominioYPatronesTest" time="0.0"/>
+  <testcase name="testVentaFactoryListaNulaLanzaExcepcion" classname="mx.uv.tcsw.domain.DominioYPatronesTest" time="0.0"/>
+  <testcase name="testPrecioValidoYGetter" classname="mx.uv.tcsw.domain.DominioYPatronesTest" time="0.0"/>
+  <testcase name="testStrategyDescuentoPorVolumenAplicaMayorA1000" classname="mx.uv.tcsw.domain.DominioYPatronesTest" time="0.0"/>
+  <testcase name="testDetalleVentaProductoNuloLanzaExcepcion" classname="mx.uv.tcsw.domain.DominioYPatronesTest" time="0.0"/>
+  <testcase name="testDetalleVentaCantidadInvalidaLanzaExcepcion" classname="mx.uv.tcsw.domain.DominioYPatronesTest" time="0.001"/>
+  <testcase name="testProductoValidoGettersYSetter" classname="mx.uv.tcsw.domain.DominioYPatronesTest" time="0.0"/>
+  <testcase name="testProductoSetPrecioNuloLanzaExcepcion" classname="mx.uv.tcsw.domain.DominioYPatronesTest" time="0.0"/>
+  <testcase name="testObserverNotificacionCorrecta" classname="mx.uv.tcsw.domain.DominioYPatronesTest" time="0.001"/>
+  <testcase name="testProductoPrecioNuloLanzaExcepcion" classname="mx.uv.tcsw.domain.DominioYPatronesTest" time="0.0"/>
+  <testcase name="testPrecioNuloLanzaExcepcion" classname="mx.uv.tcsw.domain.DominioYPatronesTest" time="0.001"/>
+  <testcase name="testPrecioNegativoLanzaExcepcion" classname="mx.uv.tcsw.domain.DominioYPatronesTest" time="0.0"/>
+  <testcase name="testDetalleVentaValidoYGetters" classname="mx.uv.tcsw.domain.DominioYPatronesTest" time="0.0"/>
 </testsuite>

@@ -140,4 +140,12 @@ public class DominioYPatronesTest {
     public void testVentaFactoryListaNulaLanzaExcepcion() {
         VentaFactory.nueva("F-003", null);
     }
+
+    @Test(expected = java.lang.reflect.InvocationTargetException.class)
+    public void testVentaFactoryConstructorPrivado() throws Exception {
+        // Usamos Reflection para acceder al constructor privado y forzar su cobertura en JaCoCo
+        java.lang.reflect.Constructor<VentaFactory> constructor = VentaFactory.class.getDeclaredConstructor();
+        constructor.setAccessible(true);
+        constructor.newInstance(); // Esto lanzará la excepción interna que programamos
+    }
 }   

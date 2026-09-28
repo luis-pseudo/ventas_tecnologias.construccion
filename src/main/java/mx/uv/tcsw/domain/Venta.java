@@ -25,6 +25,14 @@ public class Venta {
         detalles.add(new DetalleVenta(producto, cantidad));
     }
 
+    public double calcularSubtotal() {
+        double subtotal = 0;
+        for (DetalleVenta detalle : detalles) {
+            subtotal += detalle.getSubtotal();
+        }
+        return subtotal;
+    }
+
     public double calcularTotal() {
         double subtotal = 0;
         for (DetalleVenta detalle : detalles) {
@@ -37,5 +45,9 @@ public class Venta {
         for (VentaObserver obs : observadores) {
             obs.enVentaRegistrada(this);
         }
+    }
+
+    public String getId() {
+        return id;
     }
 }

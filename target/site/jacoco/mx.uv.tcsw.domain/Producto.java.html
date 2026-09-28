@@ -5,11 +5,11 @@ public class Producto {
     private Precio precio;
 
 <span class="fc" id="L7">    public Producto(String nombre, Precio precio) {</span>
-<span class="pc bpc" id="L8" title="2 of 4 branches missed.">        if (nombre == null || nombre.trim().isEmpty()) {</span>
-<span class="nc" id="L9">            throw new IllegalArgumentException(&quot;El nombre no puede estar vacío&quot;);</span>
+<span class="pc bpc" id="L8" title="1 of 4 branches missed.">        if (nombre == null || nombre.trim().isEmpty()) {</span>
+<span class="fc" id="L9">            throw new IllegalArgumentException(&quot;El nombre no puede estar vacío&quot;);</span>
         }
-<span class="pc bpc" id="L11" title="1 of 2 branches missed.">        if (precio == null) {</span>
-<span class="nc" id="L12">            throw new IllegalArgumentException(&quot;El precio es obligatorio&quot;);</span>
+<span class="fc bfc" id="L11" title="All 2 branches covered.">        if (precio == null) {</span>
+<span class="fc" id="L12">            throw new IllegalArgumentException(&quot;El precio es obligatorio&quot;);</span>
         }
 <span class="fc" id="L14">        this.nombre = nombre;</span>
 <span class="fc" id="L15">        this.precio = precio;</span>
@@ -20,7 +20,7 @@ public class Producto {
     
     // Se permite actualizar el precio del catálogo
     public void setPrecio(Precio precio) { 
-<span class="pc bpc" id="L23" title="1 of 2 branches missed.">        if (precio == null) throw new IllegalArgumentException(&quot;Precio inválido&quot;);</span>
+<span class="fc bfc" id="L23" title="All 2 branches covered.">        if (precio == null) throw new IllegalArgumentException(&quot;Precio inválido&quot;);</span>
 <span class="fc" id="L24">        this.precio = precio; </span>
 <span class="fc" id="L25">    }</span>
 }

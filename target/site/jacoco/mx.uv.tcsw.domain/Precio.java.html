@@ -6,7 +6,7 @@ public final class Precio {
     private final BigDecimal valor;
 
 <span class="fc" id="L8">    public Precio(BigDecimal valor) {</span>
-<span class="pc bpc" id="L9" title="1 of 4 branches missed.">        if (valor == null || valor.compareTo(BigDecimal.ZERO) &lt; 0) {</span>
+<span class="fc bfc" id="L9" title="All 4 branches covered.">        if (valor == null || valor.compareTo(BigDecimal.ZERO) &lt; 0) {</span>
 <span class="fc" id="L10">            throw new IllegalArgumentException(&quot;El precio no puede ser nulo o negativo&quot;);</span>
         }
 <span class="fc" id="L12">        this.valor = valor;</span>

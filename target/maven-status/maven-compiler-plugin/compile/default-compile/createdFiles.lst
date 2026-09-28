@@ -1,10 +1,15 @@
-mx/uv/tcsw/domain/Venta.class
-mx/uv/tcsw/adapter/memory/InMemoryVentaRepository.class
 mx/uv/tcsw/adapter/memory/InMemoryProductoRepository.class
 mx/uv/tcsw/domain/DetalleVenta.class
 mx/uv/tcsw/application/port/in/RegistrarVentaUseCase.class
 mx/uv/tcsw/application/ProductoRepository.class
+mx/uv/tcsw/domain/SinDescuento.class
 mx/uv/tcsw/application/port/out/VentaRepository.class
 mx/uv/tcsw/application/service/RegistrarVentaService.class
+mx/uv/tcsw/domain/DescuentoPorVolumen.class
+mx/uv/tcsw/domain/Venta.class
+mx/uv/tcsw/adapter/memory/InMemoryVentaRepository.class
+mx/uv/tcsw/domain/VentaObserver.class
+mx/uv/tcsw/domain/VentaFactory.class
 mx/uv/tcsw/domain/Producto.class
+mx/uv/tcsw/domain/PoliticaDescuento.class
 mx/uv/tcsw/domain/Precio.class

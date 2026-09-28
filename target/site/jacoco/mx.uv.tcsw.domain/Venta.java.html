@@ -2,38 +2,53 @@
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class Venta {
-    // ID necesario para que el Puerto de Salida y el Adaptador puedan buscar/guardar
-<span class="pc" id="L9">    private String id = UUID.randomUUID().toString();</span>
-<span class="pc" id="L10">    private List&lt;DetalleVenta&gt; detalles = new ArrayList&lt;&gt;();</span>
+    private final String id;
+<span class="fc" id="L8">    private List&lt;DetalleVenta&gt; detalles = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L9">    private PoliticaDescuento politicaDescuento = new SinDescuento();</span>
+<span class="fc" id="L10">    private List&lt;VentaObserver&gt; observadores = new ArrayList&lt;&gt;();</span>
 
 <span class="fc" id="L12">    public Venta(String id) {</span>
-<span class="pc bpc" id="L13" title="2 of 4 branches missed.">        if (id == null || id.isEmpty()) {</span>
-<span class="nc" id="L14">            throw new IllegalArgumentException(&quot;El ID de la venta no puede ser nulo o vacío&quot;);</span>
-        }
-<span class="fc" id="L16">        this.id = id;</span>
-<span class="fc" id="L17">    }</span>
+<span class="fc" id="L13">        this.id = id;</span>
+<span class="fc" id="L14">    }</span>
 
-<span class="nc" id="L19">    public Venta() {</span>
-        // Constructor por defecto para crear una venta con un ID generado automáticamente
-<span class="nc" id="L21">    }</span>
+    public void setPoliticaDescuento(PoliticaDescuento politica) {
+<span class="fc" id="L17">        this.politicaDescuento = politica;</span>
+<span class="fc" id="L18">    }</span>
 
-    public String getId() {
-<span class="fc" id="L24">        return id;</span>
-    }
+    public void agregarObservador(VentaObserver observador) {
+<span class="fc" id="L21">        this.observadores.add(observador);</span>
+<span class="fc" id="L22">    }</span>
 
     public void agregarPartida(Producto producto, int cantidad) {
-<span class="nc" id="L28">        detalles.add(new DetalleVenta(producto, cantidad));</span>
-<span class="nc" id="L29">    }</span>
+<span class="fc" id="L25">        detalles.add(new DetalleVenta(producto, cantidad));</span>
+<span class="fc" id="L26">    }</span>
+
+    public double calcularSubtotal() {
+<span class="fc" id="L29">        double subtotal = 0;</span>
+<span class="fc bfc" id="L30" title="All 2 branches covered.">        for (DetalleVenta detalle : detalles) {</span>
+<span class="fc" id="L31">            subtotal += detalle.getSubtotal();</span>
+<span class="fc" id="L32">        }</span>
+<span class="fc" id="L33">        return subtotal;</span>
+    }
 
     public double calcularTotal() {
-<span class="nc" id="L32">        double total = 0;</span>
-<span class="nc bnc" id="L33" title="All 2 branches missed.">        for (DetalleVenta detalle : detalles) {</span>
-<span class="nc" id="L34">            total += detalle.getSubtotal();</span>
-<span class="nc" id="L35">        }</span>
-<span class="nc" id="L36">        return total;</span>
+<span class="fc" id="L37">        double subtotal = 0;</span>
+<span class="fc bfc" id="L38" title="All 2 branches covered.">        for (DetalleVenta detalle : detalles) {</span>
+<span class="fc" id="L39">            subtotal += detalle.getSubtotal();</span>
+<span class="fc" id="L40">        }</span>
+<span class="fc" id="L41">        return subtotal - politicaDescuento.calcular(this);</span>
+    }
+
+    public void confirmarVenta() {
+<span class="fc bfc" id="L45" title="All 2 branches covered.">        for (VentaObserver obs : observadores) {</span>
+<span class="fc" id="L46">            obs.enVentaRegistrada(this);</span>
+<span class="fc" id="L47">        }</span>
+<span class="fc" id="L48">    }</span>
+
+    public String getId() {
+<span class="fc" id="L51">        return id;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

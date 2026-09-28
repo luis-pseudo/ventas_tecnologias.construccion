@@ -21,6 +21,10 @@ public class DetalleVenta {
     public int getCantidad() { return cantidad; }
     public Precio getPrecioHistorico() { return precioHistorico; }
     public double getSubtotal(){
-        return (double) cantidad * producto.getPrecio().getValor().doubleValue();
+        return (double) cantidad * precioHistorico.getValor().doubleValue();
+    }
+
+    public Producto getProducto() {
+        return producto;
     }
 }
