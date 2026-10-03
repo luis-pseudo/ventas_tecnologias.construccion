@@ -86,3 +86,8 @@ Para resolverlo:
 4. **Análisis crítico de Singleton y Facade:**
    - *Singleton:* Se rechaza su uso en este núcleo de dominio debido a que introduce estado global mutable, lo cual dificulta las pruebas unitarias concurrentes y oculta las dependencias reales de las clases.
    - *Facade:* Se considera innecesario en esta etapa, ya que la complejidad actual del subsistema de ventas no requiere una interfaz simplificada adicional que oculte interacciones complejas.
+
+# Evidencia C01 - Arquitectura
+
+## Diagrama del proyecto
+![Arquitectura Hexagonal TCSW](docs/media/arquitectura.drawio.png)
