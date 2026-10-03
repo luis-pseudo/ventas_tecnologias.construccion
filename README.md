@@ -91,3 +91,10 @@ Para resolverlo:
 
 ## Diagrama del proyecto
 ![Arquitectura Hexagonal TCSW](docs/media/arquitectura.drawio.png)
+
+## Índice de Evidencia (R02)
+- **[E01] Modelo de dominio:** Ver clases puras en `src/main/java/mx/uv/tcsw/domain`.
+- **[E02] Arquitectura hexagonal:** Aislamiento de capas comprobable en `src/main/java/mx/uv/tcsw/` mediante los paquetes `domain` (núcleo), `application` (puertos) y `adapter` (infraestructura).
+- **[E03] Patrones y justificación:** Ver archivo ADR en `docs/c01/documentacion-integrante2.md`.
+- **[E04] Pruebas y Calidad:** Ver tests ejecutables y validaciones ArchUnit en `src/test/java/mx/uv/tcsw/`.
+- **[E05] Trazabilidad:** Ver directorio `docs/contribuciones/` y etiqueta `v0.1-arquitectura`.
