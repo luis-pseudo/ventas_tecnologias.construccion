@@ -1,5 +1,5 @@
 Bitácora de Contribución - Integrante 1
-Rol: Responsable de Infraestructura y Base de Datos / Revisor Pull Request: PR #
+Rol: Responsable de Infraestructura y Base de Datos / Pull Request: PR #
 
 En esta práctica me encargué de configurar el entorno de infraestructura y persistencia inicial para el módulo utilizando PostgreSQL 16 y Docker, asegurando la reproducibilidad del proyecto para todo el equipo:
 
