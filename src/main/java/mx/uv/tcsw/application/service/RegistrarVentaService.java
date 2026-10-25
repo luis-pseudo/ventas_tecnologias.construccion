@@ -5,16 +5,16 @@ import mx.uv.tcsw.application.port.out.VentaRepository;
 import mx.uv.tcsw.domain.Venta;
 
 public class RegistrarVentaService implements RegistrarVentaUseCase {
-    private final VentaRepository repository;
+    private final VentaRepository ventaRepository;
 
-    public RegistrarVentaService(VentaRepository repository) {
-        this.repository = repository;
+    public RegistrarVentaService(VentaRepository ventaRepository) {
+        this.ventaRepository = ventaRepository;
     }
 
     @Override
     public Venta registrar(String id) {
         Venta venta = new Venta(id);
-        repository.guardar(venta);
+        ventaRepository.guardar(venta);
         return venta;
     }
 }
