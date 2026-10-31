@@ -1,13 +1,28 @@
 package mx.uv.tcsw.domain;
 
+import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "ventas")
 public class Venta {
-    private final String id;
+    
+    @Id
+    @Column(name = "id", nullable = false, unique = true)
+    private String id;
+
     private List<DetalleVenta> detalles = new ArrayList<>();
+    
+    @Transient
     private PoliticaDescuento politicaDescuento = new SinDescuento();
+    
+    @Transient
     private List<VentaObserver> observadores = new ArrayList<>();
+
+    // Constructor vacío requerido obligatoriamente por Hibernate
+    public Venta() {
+    }
 
     public Venta(String id) {
         this.id = id;
@@ -49,5 +64,9 @@ public class Venta {
 
     public String getId() {
         return id;
+    }
+    
+    public void setId(String id) {
+        this.id = id;
     }
 }
