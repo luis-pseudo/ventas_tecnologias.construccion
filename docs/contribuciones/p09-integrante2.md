@@ -19,5 +19,6 @@ consultas de productos y ventas usan sus puertos de salida.
 
 ## Verificación
 
-- `mvn clean test`
-- `./scripts/verificar_m09.sh`
+- `mvn clean test`: 35 pruebas ejecutadas correctamente.
+- Prueba de humo: POST `/productos` 201, GET `/productos` 200, validación 400 y recurso inexistente 404.
+- La respuesta 404 utiliza el código `NOT_FOUND`.
