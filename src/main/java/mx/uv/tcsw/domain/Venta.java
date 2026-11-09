@@ -1,26 +1,16 @@
 package mx.uv.tcsw.domain;
 
-import jakarta.persistence.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
-@Entity
-@Table(name = "ventas")
 public class Venta {
-    
-    @Id
-    @Column(name = "id", nullable = false, unique = true)
-    private String id;
 
+    private String id;
     private List<DetalleVenta> detalles = new ArrayList<>();
-    
-    @Transient
     private PoliticaDescuento politicaDescuento = new SinDescuento();
-    
-    @Transient
     private List<VentaObserver> observadores = new ArrayList<>();
 
-    // Constructor vacío requerido obligatoriamente por Hibernate
     public Venta() {
     }
 
@@ -38,6 +28,10 @@ public class Venta {
 
     public void agregarPartida(Producto producto, int cantidad) {
         detalles.add(new DetalleVenta(producto, cantidad));
+    }
+
+    public List<DetalleVenta> getDetalles() {
+        return Collections.unmodifiableList(detalles);
     }
 
     public double calcularSubtotal() {
@@ -65,7 +59,7 @@ public class Venta {
     public String getId() {
         return id;
     }
-    
+
     public void setId(String id) {
         this.id = id;
     }
