@@ -1,6 +1,8 @@
-# Contribución - Integrante 3: DTOs de Entrada y Manejo Global de Errores
+# Contribución - Integrante 3:
 
-# PR: 
+## Fase 1: DTOs de Entrada y Manejo Global de Errores
+
+# PR: 30
 ## 1. Descripción de la Tarea
 Implementación de los contratos de entrada (DTOs) para productos y ventas, junto con el componente centralizado de manejo de excepciones (`GlobalExceptionHandler`) para estandarizar las respuestas de error en toda la API.
 
@@ -12,3 +14,10 @@ Implementación de los contratos de entrada (DTOs) para productos y ventas, junt
 - `src/main/java/mx/uv/tcsw/adapter/web/error/GlobalExceptionHandler.java`
 - `src/main/java/mx/uv/tcsw/adapter/web/error/GlobalExceptionHandlerTest.java`
 - `src/main/java/mx/uv/tcsw/adapter/web/dto/request/RequestsValidacionTest.java`
+
+
+
+## Fase 2: Pruebas de Integración y Errores
+
+# PR: 32
+- **Descripción:** Adición de las pruebas de integración (`ErroresApiTest`).
