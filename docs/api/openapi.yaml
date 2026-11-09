@@ -1,0 +1,142 @@
+openapi: 3.0.3
+info:
+  title: API de Ventas TCSW
+  version: 1.0.0
+paths:
+  /api/v1/productos:
+    get:
+      summary: Lista el catálogo
+      responses:
+        '200':
+          description: Lista de productos
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/Producto' }
+    post:
+      summary: Crea un producto
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/CrearProducto' }
+            example: { nombre: Teclado, precio: 450.00 }
+      responses:
+        '201':
+          description: Creado (header Location con la URL del recurso)
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Producto' }
+        '400': { $ref: '#/components/responses/Error' }
+  /api/v1/productos/{id}:
+    get:
+      summary: Obtiene un producto
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string } }
+      responses:
+        '200':
+          description: Producto
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Producto' }
+        '404': { $ref: '#/components/responses/Error' }
+  /api/v1/ventas:
+    post:
+      summary: Registra una venta
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/CrearVenta' }
+      responses:
+        '201':
+          description: Venta registrada
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Venta' }
+        '400': { $ref: '#/components/responses/Error' }
+        '404': { $ref: '#/components/responses/Error' }
+        '422': { $ref: '#/components/responses/Error' }
+  /api/v1/ventas/{id}:
+    get:
+      summary: Obtiene una venta
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string } }
+      responses:
+        '200':
+          description: Venta
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Venta' }
+        '404': { $ref: '#/components/responses/Error' }
+components:
+  responses:
+    Error:
+      description: Error con formato consistente
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ErrorResponse' }
+          example:
+            timestamp: '2026-11-08T18:00:00Z'
+            status: 400
+            code: VALIDATION_ERROR
+            message: La solicitud contiene datos inválidos
+            path: /api/v1/productos
+            details: [{ field: precio, message: debe ser mayor que 0 }]
+  schemas:
+    CrearProducto:
+      type: object
+      required: [nombre, precio]
+      properties:
+        nombre: { type: string, maxLength: 100 }
+        precio: { type: number, minimum: 0.01 }
+    Producto:
+      type: object
+      properties:
+        id: { type: string }
+        nombre: { type: string }
+        precio: { type: number }
+    CrearVenta:
+      type: object
+      required: [lineas]
+      properties:
+        lineas:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            required: [productoId, cantidad]
+            properties:
+              productoId: { type: string }
+              cantidad: { type: integer, minimum: 1 }
+    Venta:
+      type: object
+      properties:
+        id: { type: string }
+        lineas:
+          type: array
+          items:
+            type: object
+            properties:
+              producto: { type: string }
+              cantidad: { type: integer }
+              precioUnitario: { type: number }
+              subtotal: { type: number }
+        subtotal: { type: number }
+        total: { type: number }
+    ErrorResponse:
+      type: object
+      properties:
+        timestamp: { type: string }
+        status: { type: integer }
+        code: { type: string }
+        message: { type: string }
+        path: { type: string }
+        details:
+          type: array
+          items:
+            type: object
+            properties:
+              field: { type: string }
+              message: { type: string }
