@@ -4,6 +4,8 @@ import mx.uv.tcsw.application.port.out.VentaRepository;
 import mx.uv.tcsw.domain.Venta;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 public class VentaRepositoryJdbc implements VentaRepository {
@@ -39,5 +41,20 @@ public class VentaRepositoryJdbc implements VentaRepository {
         }
         return Optional.empty();
     }
-}
 
+    @Override
+    public List<Venta> listar() {
+        String sql = "SELECT id FROM ventas ORDER BY id";
+        List<Venta> ventas = new ArrayList<>();
+        try (Connection conn = DriverManager.getConnection(url, user, password);
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+            while (rs.next()) {
+                ventas.add(new Venta(rs.getString("id")));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Error al listar las ventas en PostgreSQL", e);
+        }
+        return ventas;
+    }
+}
