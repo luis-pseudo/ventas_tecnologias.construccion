@@ -2,7 +2,7 @@
 
 **Nombre:** Diana Pimentel
 **Rol:** servicios HTTP tipados, manejo de errores y estado del carrito
-**Issue:** #38· **Rama / PR:** `feature/p10-servicios` / #
+**Issue:** #38 · **Rama / PR:** `feature/p10-servicios` / #39
 **Revisó el PR:** Integrante 3 (DN242005) - Pendiente de revision
 **Revisé el PR de:** Integrante 1 (0Dezzigner) - https://github.com/luis-pseudo/ventas_tecnologias.construccion/pull/37
 
@@ -27,7 +27,9 @@ Capa de acceso a la API del cliente Angular, sin dependencias de pantallas:
 
 ## Commits
 
-<pegar la salida de `git log --oneline origin/master..HEAD`>
+8de0893 docs(p10): contribucion integrante 2
+206555d feat(cliente): CarritoService con signals y pruebas
+9f5c83a feat(cliente): servicios HTTP tipados, modelos y interceptor de errores ApiError
 
 ## Pruebas aportadas (19 casos)
 
@@ -50,4 +52,6 @@ cd cliente-angular && npm ci && npm run test:ci   # 20 pruebas en esta etapa del
 
 ## Dificultades y cómo se resolvieron
 
-<escribir con tus palabras lo que realmente te pasó>
+- `app.config.ts` ya existía en `master` (configuración base del Integrante 1), por lo que al copiar mis archivos se sobrescribió. Comparé con `git diff` para confirmar que se conservaban `provideBrowserGlobalErrorListeners()` y `provideRouter(routes)` y que solo se agregaba `provideHttpClient` con el interceptor.
+- Mi copia local de `master` tenía cambios sin guardar, así que clone el repositorio de nuevo en una carpeta limpia (`ventas_p10`) para no mezclarlos en el PR.
+- Mi trabajo dependía del proyecto Angular del Integrante 1, por lo que esperé a que se mergeara el PR #37 antes de crear mi rama.
