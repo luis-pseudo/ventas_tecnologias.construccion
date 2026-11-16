@@ -2,7 +2,7 @@
 
 **Nombre:** Jonathan Daniel Paz Sanchez
 **Rol:** catálogo (listado y formulario de alta) y calidad (Sonar)
-**Issue:** pendiente de registrar · **Rama / PR:** `feature/p10-catalogo` / pendiente de abrir
+**Issue:** pendiente de registrar · **Rama / PR:** `feature/p10-catalogo` / [PR #40](https://github.com/luis-pseudo/ventas_tecnologias.construccion/pull/40)
 **Revisó el PR:** Integrante 4 - pendiente de revisión
 **Revisé el PR de:** Integrante 2 - pendiente de revisión
 
@@ -12,20 +12,20 @@
 - **Formulario reactivo** de alta de producto con validación (`nombre` obligatorio y máx. 100; `precio` obligatorio y ≥ 0.01),
   mensajes por campo, bloqueo del botón mientras se guarda y visualización de los errores `details` que devuelve la API.
 - Botón *Agregar al carrito* conectado a `CarritoService`.
-- Análisis de calidad con SonarQube (backend y cliente) y atención de hallazgos.
+- Análisis de calidad con SonarQube (backend y cliente) y atención de hallazgos,
+  pendiente para la fase posterior en la rama `docs/p10-sonar`.
 
 ## Archivos creados o modificados
 
 - `cliente-angular/src/app/features/catalogo/catalogo.ts` (reemplaza la pantalla provisional)
 - `cliente-angular/src/app/features/catalogo/catalogo.html`
 - `cliente-angular/src/app/features/catalogo/catalogo.spec.ts`
-- `cliente-angular/sonar-project.properties`
-- `docs/p10/sonar.md`
 
 ## Commits
 
 ```text
-ae43d2d feat(cliente): catalogo con listado, estados de carga y formulario reactivo
+9293cef feat(cliente): catalogo con listado, estados de carga y formulario reactivo
+5db2227 docs(p10): contribucion integrante 3
 ```
 
 ## Pruebas aportadas (7 casos)
@@ -50,9 +50,7 @@ cd cliente-angular && npm ci && npm run test:ci   # 27 pruebas en esta etapa del
 
 ## Dificultades y cómo se resolvieron
 
-La rama del Integrante 2 todavía estaba abierta al iniciar esta etapa. Para poder
-validar el catálogo sin duplicar sus archivos, trabajé temporalmente sobre su
-rama y dejé en este PR únicamente los tres archivos del catálogo. La integración
-final debe hacerse después de que el PR del Integrante 2 se fusione en `master`.
-El análisis Sonar queda pendiente para una rama y PR separados, tal como pide la
-guía.
+El PR del Integrante 2 estaba abierto al iniciar esta etapa, así que validé el
+catálogo sobre esa base y después separé la rama para que esta PR incluyera sólo
+los tres archivos del catálogo y esta bitácora. La revisión del Integrante 4 y
+el análisis Sonar quedan pendientes para las fases indicadas en la guía.
