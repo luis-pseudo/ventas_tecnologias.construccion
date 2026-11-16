@@ -33,6 +33,13 @@ public class VentaRestController {
         this.ventas = ventas;
     }
 
+    @GetMapping
+    public List<VentaResponse> listar() {
+        return ventas.listar().stream()
+            .map(VentaMapper::toResponse)
+            .collect(Collectors.toList());
+    }
+
     @PostMapping
     public ResponseEntity<VentaResponse> crear(@Valid @RequestBody CrearVentaRequest request) {
         List<LineaVentaComando> lineas = request.getLineas().stream()
