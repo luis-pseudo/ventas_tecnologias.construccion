@@ -1,0 +1,54 @@
+<h1>Ventas</h1>
+
+<section class="panel" aria-labelledby="titulo-ventas">
+  <h2 id="titulo-ventas">Historial de ventas</h2>
+
+  @switch (estado()) {
+    @case ('cargando') {
+      <p class="aviso aviso-info" role="status">Cargando ventas...</p>
+    }
+    @case ('error') {
+      <p class="aviso aviso-error" role="alert">{{ error() }}</p>
+      <button type="button" class="secundario" (click)="cargar()">Reintentar</button>
+    }
+    @default {
+      @if (ventas().length === 0) {
+        <p class="vacio">Aún no hay ventas registradas.</p>
+      } @else {
+        @for (venta of ventas(); track venta.id) {
+          <details class="venta">
+            <summary>
+              <span>Venta total {{ venta.total | currency: 'MXN' : 'symbol-narrow' }}</span>
+              <span class="id-venta">{{ venta.id }}</span>
+            </summary>
+
+            <table class="tabla">
+              <thead>
+                <tr>
+                  <th>Producto</th>
+                  <th class="num">Cantidad</th>
+                  <th class="num">P. unitario</th>
+                  <th class="num">Subtotal</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (linea of venta.lineas; track $index) {
+                  <tr>
+                    <td data-etiqueta="Producto">{{ linea.producto }}</td>
+                    <td data-etiqueta="Cantidad" class="num">{{ linea.cantidad }}</td>
+                    <td data-etiqueta="P. unitario" class="num">
+                      {{ linea.precioUnitario | currency: 'MXN' : 'symbol-narrow' }}
+                    </td>
+                    <td data-etiqueta="Subtotal" class="num">
+                      {{ linea.subtotal | currency: 'MXN' : 'symbol-narrow' }}
+                    </td>
+                  </tr>
+                }
+              </tbody>
+            </table>
+          </details>
+        }
+      }
+    }
+  }
+</section>
