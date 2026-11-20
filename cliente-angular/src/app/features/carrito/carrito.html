@@ -1,0 +1,60 @@
+<h1>Carrito</h1>
+
+@if (exito()) {
+  <p class="aviso aviso-exito" role="status">{{ exito() }}</p>
+}
+@if (error()) {
+  <p class="aviso aviso-error" role="alert">{{ error() }}</p>
+}
+
+<section class="panel" aria-labelledby="titulo-carrito">
+  <h2 id="titulo-carrito">Productos en carrito</h2>
+
+  @if (lineas().length === 0) {
+    <p class="vacio">El carrito está vacío. Agrega productos desde Catálogo.</p>
+    <a routerLink="/catalogo">Ir a catálogo</a>
+  } @else {
+    <table class="tabla">
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th class="num">Precio</th>
+          <th class="num">Cantidad</th>
+          <th class="num">Subtotal</th>
+          <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (linea of lineas(); track linea.producto.id) {
+          <tr>
+            <td data-etiqueta="Producto">{{ linea.producto.nombre }}</td>
+            <td data-etiqueta="Precio" class="num">{{ linea.producto.precio | currency: 'MXN' : 'symbol-narrow' }}</td>
+            <td data-etiqueta="Cantidad" class="num">
+              <input
+                type="number"
+                min="1"
+                [value]="linea.cantidad"
+                (input)="cambiarCantidad(linea.producto.id, $any($event.target).value)"
+              />
+            </td>
+            <td data-etiqueta="Subtotal" class="num">
+              {{ linea.producto.precio * linea.cantidad | currency: 'MXN' : 'symbol-narrow' }}
+            </td>
+            <td data-etiqueta="Acción">
+              <button type="button" class="peligro" (click)="quitar(linea.producto.id)">Quitar</button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+
+    <p class="total">Total: {{ total() | currency: 'MXN' : 'symbol-narrow' }}</p>
+
+    <div class="acciones">
+      <button type="button" class="secundario" (click)="vaciar()">Vaciar carrito</button>
+      <button type="button" [disabled]="!puedeRegistrar()" (click)="registrarVenta()">
+        {{ registrando() ? 'Registrando...' : 'Registrar venta' }}
+      </button>
+    </div>
+  }
+</section>

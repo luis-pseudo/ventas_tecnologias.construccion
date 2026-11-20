@@ -47,7 +47,7 @@ Capa de acceso a la API del cliente Angular, sin dependencias de pantallas:
 ## Comprobación reproducible
 
 ```bash
-cd cliente-angular && npm ci && npm run test:ci   # 20 pruebas en esta etapa del repositorio
+cd cliente-angular && npm ci && npm run test:ci   # 22 pruebas en esta etapa del repositorio
 ```
 
 ## Dificultades y cómo se resolvieron
@@ -55,3 +55,12 @@ cd cliente-angular && npm ci && npm run test:ci   # 20 pruebas en esta etapa del
 - `app.config.ts` ya existía en `master` (configuración base del Integrante 1), por lo que al copiar mis archivos se sobrescribió. Comparé con `git diff` para confirmar que se conservaban `provideBrowserGlobalErrorListeners()` y `provideRouter(routes)` y que solo se agregaba `provideHttpClient` con el interceptor.
 - Mi copia local de `master` tenía cambios sin guardar, así que clone el repositorio de nuevo en una carpeta limpia (`ventas_p10`) para no mezclarlos en el PR.
 - Mi trabajo dependía del proyecto Angular del Integrante 1, por lo que esperé a que se mergeara el PR #37 antes de crear mi rama.
+
+## Cierre R04
+
+- Se reemplazó la pantalla provisional de carrito por integración real con CarritoService y VentaService.
+- Se añadieron estados de vacío, éxito y error.
+- Se agregaron pruebas de la vista de carrito.
+- Evidencia:
+  - cd cliente-angular && npm run test:ci
+  - capturas del carrito vacío y carrito con productos
