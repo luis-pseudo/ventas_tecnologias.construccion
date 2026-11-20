@@ -98,3 +98,37 @@ Para resolverlo:
 - **[E03] Patrones y justificación:** Ver archivo ADR en `docs/c01/documentacion-integrante2.md`.
 - **[E04] Pruebas y Calidad:** Ver tests ejecutables y validaciones ArchUnit en `src/test/java/mx/uv/tcsw/`.
 - **[E05] Trazabilidad:** Ver directorio `docs/contribuciones/` y etiqueta `v0.1-arquitectura`.
+
+
+
+# Evidencia C03 (R04) - Integración web (v0.3-web)
+## Objetivo
+Integrar API y cliente Angular reutilizando el núcleo del proyecto, con validación, manejo de errores, pruebas y trazabilidad de trabajo.
+
+## Guía de reproducción
+Requisitos:
+- Java 11+
+- Maven 3+
+- Node 20.19+ o 22.12+ o 24+
+- npm 10+
+
+Pasos:
+1. `mvn clean test`
+2. `cd cliente-angular && npm ci`
+3. `cd cliente-angular && npm run test:ci`
+4. `cd cliente-angular && npm run build`
+5. `./scripts/verify-module.sh M13`
+
+## Casos demostrados
+- Éxito:
+  - Alta de producto válida
+  - Registro de venta válida
+  - Venta visible en listado
+- Vacío:
+  - Catálogo vacío
+  - Carrito vacío
+  - Historial vacío
+- Error:
+  - Alta inválida con `VALIDATION_ERROR`
+  - Venta con producto inexistente con `NOT_FOUND`
+  - API caída con `NETWORK_ERROR` en cliente
