@@ -20,12 +20,7 @@
 - `./scripts/verify-module.sh M13` (resultado: `MODULO_M13_VERIFICADO`).
 - `./scripts/verify-release.sh` (resultado: `MODULO_R05_VERIFICADO`).
 
-## Evidencia
-- Captura de `MODULO_R05_VERIFICADO`.
-- Captura del JAR generado (`tcsw-ventas-1.0-SNAPSHOT.jar`).
-- Captura del archivo comprimido Angular (`cliente-angular.tar.gz`).
-- Captura del recorrido completo.
-
 ## Commits
 - `# 23c84cf feat(release): agrega verificacion completa v1.0-rc`
-- `#[hash] docs(c04): agrega contribucion integrante 1`
+- `# ce9d0b8 docs(c04): agrega contribucion integrante 1
+`
