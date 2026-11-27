@@ -132,3 +132,64 @@ Pasos:
   - Alta inválida con `VALIDATION_ERROR`
   - Venta con producto inexistente con `NOT_FOUND`
   - API caída con `NETWORK_ERROR` en cliente
+
+
+
+  # Evidencia C04 / R05 - Candidato v1.0-rc
+
+## Identificación
+- Versión: `v1.0-rc`
+- Rama: `master`
+- Commit: `HEAD de master etiquetado en v1.0-rc`
+- Tag: `v1.0-rc`
+
+## Requisitos
+- Java 11
+- Maven 3
+- Node 20.19+, 22.12+ o 24+
+- npm 10+
+- Docker opcional para PostgreSQL
+
+## Construcción limpia
+```bash
+mvn clean test
+mvn package
+
+cd cliente-angular
+npm ci
+npm run test:ci
+npm run test:cov
+npm run build
+cd ..
+```
+
+## Verificación integrada
+```bash
+./scripts/verify-module.sh M13
+./scripts/verify-release.sh
+```
+
+## Ejecución local
+Terminal 1:
+```bash
+mvn spring-boot:run
+```
+
+Terminal 2:
+```bash
+cd cliente-angular
+npm start
+```
+
+Acceso:
+- Backend: http://localhost:8080
+- Angular: http://localhost:4200
+
+## Evidencia R05
+- Integración: recorrido catálogo → carrito → registrar venta → ventas.
+- Pruebas: Maven, Vitest y cobertura JaCoCo/LCOV.
+- Sonar: análisis, hallazgos y tratamiento.
+- CI: GitHub Actions ejecutado por PR y rama principal.
+- Reproducibilidad: scripts y versión de herramientas documentadas.
+- Artefactos: JAR Maven y build Angular.
+- Versión: etiqueta `v1.0-rc`.
