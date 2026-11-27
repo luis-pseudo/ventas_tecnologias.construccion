@@ -1,0 +1,106 @@
+name: CI - Candidato R05
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configurar Java 11
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "11"
+          cache: maven
+
+      - name: Ejecutar pruebas backend
+        run: mvn -B clean test
+
+      - name: Generar reporte JaCoCo
+        if: always()
+        run: mvn -B jacoco:report
+
+      - name: Publicar reportes backend
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-reports
+          if-no-files-found: warn
+          path: |
+            target/surefire-reports/
+            target/site/jacoco/
+
+  frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configurar Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: cliente-angular/package-lock.json
+
+      - name: Instalar dependencias
+        working-directory: cliente-angular
+        run: npm ci --no-audit --no-fund
+
+      - name: Ejecutar pruebas
+        working-directory: cliente-angular
+        run: CI=true npm run test:ci
+
+      - name: Ejecutar cobertura
+        working-directory: cliente-angular
+        run: npm run test:cov
+
+      - name: Construir Angular
+        working-directory: cliente-angular
+        run: npm run build
+
+      - name: Publicar artefactos frontend
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontend-build
+          if-no-files-found: warn
+          path: |
+            cliente-angular/dist/
+            cliente-angular/coverage/
+
+  integracion:
+    needs:
+      - backend
+      - frontend
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configurar Java 11
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "11"
+          cache: maven
+
+      - name: Configurar Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: cliente-angular/package-lock.json
+
+      - name: Instalar dependencias Angular
+        working-directory: cliente-angular
+        run: npm ci --no-audit --no-fund
+
+      - name: Ejecutar recorrido M13
+        run: ./scripts/verify-module.sh M13
